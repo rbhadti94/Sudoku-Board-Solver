@@ -8,5 +8,14 @@ This repository contains different versions of a Sudoku puzzle solver designed t
 ##Board Checker
 Regardless of the algorithm that is used, the board will have to be checked. Either routinely throughout the algorithm or at the end of the program.  
 
+##Solver Methods
+
+###Back-Tracking V1.0
+
+###Back-Tracking V2.0
+
+###Humanised Back-Tracking V2.1
+
+
 
 
