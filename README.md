@@ -23,10 +23,25 @@ This board is not valid.
 Time Taken : XXXXX
 ```
 
+If you observe the text file you'll notice that the rules of Sudoku are not followed hence this message.
+
 ## Solver Methods
 
-### Back-Tracking V 1.0
+The checker designed above is now used in conjunction with a board solver! There are 3 main methods that are used here all of which have been tested to work!
 
-### Back-Tracking V 2.0
+###  V 1.0 : Back-Tracking
+This version is essentially purely brute force.
 
-### Humanised Back-Tracking V 2.1
+1. Loads in an unsolved board where blank spaces are represented by a ```'0'```. 
+
+2.
+
+3.
+
+4.
+
+###  V 2.0 : Improved Back-Tracking
+
+### V 2.1 : Humanised Back-Tracking
+
+### Stochastic Search & Optimisation
