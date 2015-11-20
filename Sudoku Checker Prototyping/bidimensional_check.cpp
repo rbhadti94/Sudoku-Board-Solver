@@ -21,24 +21,42 @@ using namespace std;
 const int SIDE = 9;
 //Length of side.
 
-void read_file (int board[][SIDE]);
+void read_file (int board[][SIDE], char *file_name);
 bool check_board (int board[][SIDE]);
 bool square_check(vector <int> &square);
 
-int main(){
+int main(int argc, char **argv){
+	char *file_name = NULL;
+	if(argc == 1){
+		cout<<"Please enter board file name, including extension"<<endl;
+		exit(1);
+	}
+	else if(argc==2){
+		file_name = argv[1];
+	}
+	else{
+		cout<<"Too many input arguments"<<endl;
+		exit(1);
+	}
+
 	//Start Clock.
 	clock_t begin = clock();
 	double length;
 	int board[SIDE][SIDE];
 	
-	read_file(board);
+	read_file(board, file_name);
 	bool result = check_board(board);
 	
 	clock_t end = clock();
 	clock_t ticks = end - begin;
 	double seconds = ticks/(double) CLOCKS_PER_SEC;
 
-	cout<<"RESULT : "<<result<<endl;
+	if(result){
+		cout<<"This board is valid"<<endl;
+	}
+	else{
+		cout<<"This board is not valid"<<endl;
+	}
 
 	cout<<"Time Taken : "<<seconds<<endl;
 	
@@ -48,10 +66,10 @@ int main(){
 
 /*Read the board into 
 a 9x9 bidimensional array*/
-void read_file (int board[][SIDE]){
+void read_file (int board[][SIDE], char *file_name){
 	int i = 0;
 	int j = 0;	
-	ifstream infile ("board.txt");
+	ifstream infile (file_name);
 	if (!infile.is_open()){
 		cout<<"Could not open file"<<endl;	
 		exit(1);

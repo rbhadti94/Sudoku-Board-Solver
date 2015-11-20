@@ -35,11 +35,11 @@ bool back_track(int board[][SIDE], int i, int j){
 
 /*Read the board into 
 a 9x9 bidimensional array*/
-void read_file (int board[][SIDE]){
+void read_file (int board[][SIDE], char *filename){
 	int i = 0;
 	int j = 0;
 	
-	ifstream infile ("board.txt");
+	ifstream infile (filename);
 	
 	if (!infile.is_open()){
 		cout<<"Could not open file"<<endl;	

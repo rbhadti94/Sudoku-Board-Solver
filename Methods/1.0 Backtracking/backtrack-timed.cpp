@@ -19,7 +19,19 @@ process for this is as follows:
 #include <ctime>
 //For timing purposes.
 
-int main(){
+int main(int argc, char **argv){
+	
+	char *file_name = NULL;
+
+	if(argc == 1){
+		cout<<"Please enter the board input file name (with the extension)"<<endl;
+		exit(1);
+	}
+	else{
+		file_name = argv[1];
+	}
+
+	
 	clock_t begin;
 	double length;
 	begin = clock();
@@ -34,7 +46,7 @@ int main(){
 	//Vector contains elements that can 
 	//not be changed in the sudoku board.
 	
-	read_file(board);
+	read_file(board, file_name);
 
 	read_const(const_elem, board);
 	//Read into a vector the pre-filled

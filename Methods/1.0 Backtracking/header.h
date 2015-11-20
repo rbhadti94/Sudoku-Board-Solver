@@ -18,7 +18,7 @@ typedef struct {
 
 const int SIDE = 9;
 
-void read_file (int board[][SIDE]);
+void read_file (int board[][SIDE], char *filename);
 bool check_board (int board[][SIDE]);
 bool square_check(vector <int> &square);
 void read_const(vector <constant> &vec1, int board[][SIDE]);

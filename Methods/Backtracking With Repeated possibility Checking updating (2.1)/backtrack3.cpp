@@ -30,7 +30,7 @@ typedef struct {
 //cannot be changed (i.e elements that are
 //already prefilled at the start of the game).
 
-void read_file(single board[][SIDE]);
+void read_file(single board[][SIDE], char *filename);
 void set_max_poss(single board[][SIDE], int i, int j);
 void find_possibilities(single board[][SIDE], int i, int j);
 void read_const(vector <constant> &vec1, single board[][SIDE]);
@@ -44,7 +44,17 @@ void init_board(single board[][SIDE]);
 void update(single board[][SIDE], int i, int j);
 void remove_square_elem(single board[][SIDE], int x, int y, int i,  int j);
 
-int main(){
+int main(int argc, char **argv){
+	
+	char *file_name = NULL;
+	if(argc == 1){
+		cout<<"Please enter a text file name with the extension"<<endl;
+		exit(1);
+	}
+	else{
+		file_name = argv[1];
+	}
+
 	bool result, check = false;
 	int i, j, a, b, times, timed;
 	clock_t begin;
@@ -53,7 +63,7 @@ int main(){
 	single board[SIDE][SIDE];
 	vector <constant> const_elem;
 	
-	read_file(board);
+	read_file(board, file_name);
 	//Read file into 2 dimensional board.
 
 	init_board(board);
@@ -149,10 +159,10 @@ bool back_track(single board[][SIDE], int i, int j){
 }
 
 
-void read_file(single board[][SIDE]){
+void read_file(single board[][SIDE], char *filename){
 	int i = 0;
 	int j = 0;
-	ifstream infile ("board.txt");
+	ifstream infile (filename);
 	if (!infile.is_open()){
 		cout<<"Could not open file"<<endl;
 		exit(1);
