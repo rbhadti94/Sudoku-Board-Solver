@@ -1,0 +1,99 @@
+//*****USING VECTORS*****//
+
+/*This program is used to check
+a 3x3 sudoku board. It will check that
+each column, row and square consists
+of numbers 1 - 9 which appear only once.
+*/ 
+
+/*Further more this program will be used to
+check if the inputted value is valid each 
+and every time a value is entered.*/
+
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <cstdlib> //Required for exit.
+#include <ctime>  
+//<ctime> is used for seeing
+//how long the problem takes.
+
+using namespace std;
+
+
+void read_file (vector <int> &vec);
+bool check_board(vector <int> &board);
+//Vector will be passed by reference.
+
+int main(){
+	//Start Clock.
+	clock_t begin = clock();
+	double length;
+	bool result;
+
+	
+	vector <int> board;
+	//It is easier to check the board
+	//if we use a singular dimension
+	//vector.
+	
+	read_file(board);
+	
+	result = check_board(board);
+	cout<<"The board is: " << result<<endl;
+	//Clock Operations to calculate time.
+	clock_t end = clock();
+	clock_t ticks = end - begin;
+	double seconds = ticks/(double) CLOCKS_PER_SEC;
+	
+	cout<<"Time Taken : "<<seconds<<endl;
+	cout<<"Press any key to exit"<<endl;
+	cin.get();
+	//Required in windows.
+	return 0;
+}
+
+void read_file (vector <int> &vec){
+	int temp;
+	//Temporary integer required
+	//before pushing back into 
+	//the vector.
+	
+	ifstream infile ("unsolved.txt");
+	if (!infile.is_open()){
+		cout<<"Could not open file"<<endl;
+		cout<<"Please check file location"<<endl;
+		exit(1);
+		//If file cannot be opened then exit the programme.
+	}
+	
+	bool loop_file = true;
+	
+	while (loop_file){
+		infile >> temp;
+			
+		if (infile.fail()){
+			loop_file = false;
+			//If 'infile' tells us it has failed
+			//to read the file, then exit the loop.
+			}
+	
+		else {
+			//Otherwise push back the value
+			//into the vector : vec.
+			vec.push_back(temp);
+		}
+	
+	}
+
+	infile.close();
+}
+
+bool check_board(vector <int> &board){
+	//Check Rows.
+	//Check Columns.
+	//Check Squares.
+	return true;
+	//If all tests have 
+	//passed then return true.
+}
